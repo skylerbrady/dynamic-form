@@ -1,0 +1,18 @@
+<questionnaire>
+  <Section title="AAA">
+    <Question ID="1">
+      <QuestionText>How many environments you need?</QuestionText>   
+      <AnswerType>Radio Button</AnswerType>
+      <AnswerData>Prod, UAT, Dev</AnswerData>
+    </Question>
+    <Question ID="2">
+      <QuestionText>Another question...</QuestionText>   
+      <AnswerType>Radio Button</AnswerType>
+      <AnswerData>Option 1, Option 2, Option 3</AnswerData>
+    </Question>
+    <Question ID="3">
+      <QuestionText>Yet another question?</QuestionText>   
+      <AnswerType>Text</AnswerType>
+    </Question>
+  </Section>
+</questionnaire>

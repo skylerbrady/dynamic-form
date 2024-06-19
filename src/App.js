@@ -1,46 +1,35 @@
-import { parseString } from "xml2js";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import DynamicForm from "./DynamicForm";
 import "./DynamicForm.css";
-
-// XML data stored in a variable (assuming it's corrected to valid XML)
-const xmlData = `
-<quiestionnaire>
-  <Section title="AAA">
-    <Question ID="1">
-      <QuestionText>How many environments you need?</QuestionText>   
-      <AnswerType>Radio Button</AnswerType>
-      <AnswerData>Prod, UAT, Dev</AnswerData>
-    </Question>
-    <Question ID="2">
-      <QuestionText>Another question...</QuestionText>   
-      <AnswerType>Radio Button</AnswerType>
-      <AnswerData>Option 1, Option 2, Option 3</AnswerData>
-    </Question>
-    <Question ID="3">
-      <QuestionText>Yet another question?</QuestionText>   
-      <AnswerType>Text</AnswerType>
-    </Question>
-  </Section>
-</quiestionnaire>
-`;
-
-let questionnaireData;
-
-parseString(xmlData, { explicitArray: false }, (err, result) => {
-  if (err) {
-    console.error("Error parsing XML:", err);
-    return;
-  }
-
-  questionnaireData = result.quiestionnaire;
-});
+import { fetchXmlData } from "./common/commonHelpers";
 
 const App = () => {
+  const [xmlData, setXmlData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchXmlData();
+        setXmlData(data.questionnaire ? data.questionnaire : null);
+      } catch (error) {
+        console.error("Error fetching or parsing XML data");
+        // Handle error state or display error message as needed
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
-    <div className="app">
-      <DynamicForm questionnaire={questionnaireData} />
-    </div>
+    <>
+      {!xmlData ? (
+        <div>Error fetching or parsing XML data</div>
+      ) : (
+        <div className="app">
+          <DynamicForm questionnaire={xmlData} />
+        </div>
+      )}
+    </>
   );
 };
 
