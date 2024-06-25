@@ -45,3 +45,27 @@
 .submit-button:hover {
   background-color: #45a049;
 }
+
+.tab-headers {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.tab-headers button {
+  margin: 0 10px;
+  padding: 10px;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.tab-headers button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.dynamic-form {
+  margin-top: 20px;
+}

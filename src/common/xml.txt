@@ -1,18 +1,76 @@
 <questionnaire>
-  <Section title="AAA">
+  <Section title="Section-1">
     <Question ID="1">
-      <QuestionText>How many environments you need?</QuestionText>   
+      <QuestionText>
+        This Consent Acknowledgement is intended to describe the practices EY follows in relation to Qualtrics CoreXM (“Tool”) with respect to the privacy of all individuals whose personal data is processed and stored in the Tool. This Consent Acknowledgment should be read together with the ey.com Privacy Statement, and in case of any conflict with the ey.com Privacy Statement, the terms of this Consent Acknowledgement will prevail. Please read this Consent Acknowledgement carefully
+      </QuestionText>
+      <AnswerType>Radio Button</AnswerType>
+      <AnswerData>Yes, No</AnswerData>
+    </Question>
+  </Section>
+  <Section title="Section-2">
+    <Question ID="1">
+      <QuestionText>How many environments you need?</QuestionText>
       <AnswerType>Radio Button</AnswerType>
       <AnswerData>Prod, UAT, Dev</AnswerData>
     </Question>
     <Question ID="2">
-      <QuestionText>Another question...</QuestionText>   
+      <QuestionText>Another question...</QuestionText>
       <AnswerType>Radio Button</AnswerType>
-      <AnswerData>Option 1, Option 2, Option 3</AnswerData>
+      <AnswerData>Option 3, Option 4, Option 5</AnswerData>
     </Question>
     <Question ID="3">
-      <QuestionText>Yet another question?</QuestionText>   
+      <QuestionText>Yet another question?</QuestionText>
       <AnswerType>Text</AnswerType>
     </Question>
   </Section>
+  <Section title="Section-3">
+  <Question ID="1">
+    <QuestionText>How many environments you need?</QuestionText>
+    <AnswerType>Table</AnswerType>
+    <TableRow> , Region, Subscription ID, Resource group</TableRow>
+    <TableData>
+      <TableDataType>text</TableDataType>
+      <TableDataValue>Product Environment</TableDataValue>
+    </TableData>
+    <TableData>
+      <TableDataType>dropdown</TableDataType>
+      <TableDataValue>Product, Environment</TableDataValue>
+    </TableData>
+    <TableData>
+      <TableDataType>TextField</TableDataType>
+    </TableData>
+    <TableData>
+      <TableDataType>TextField</TableDataType>
+    </TableData>
+    <TableData>
+      <TableDataType>text</TableDataType>
+      <TableDataValue>UAT Environment</TableDataValue>
+    </TableData>
+    <TableData>
+      <TableDataType>dropdown</TableDataType>
+      <TableDataValue>Product 1, Environment 1</TableDataValue>
+    </TableData>
+    <TableData>
+      <TableDataType>TextField</TableDataType>
+    </TableData>
+    <TableData>
+      <TableDataType>TextField</TableDataType>
+    </TableData>
+     <TableData>
+      <TableDataType>text</TableDataType>
+      <TableDataValue>Dev Environment</TableDataValue>
+    </TableData>
+    <TableData>
+      <TableDataType>dropdown</TableDataType>
+      <TableDataValue>Product 2, Environment 2</TableDataValue>
+    </TableData>
+    <TableData>
+      <TableDataType>TextField</TableDataType>
+    </TableData>
+    <TableData>
+      <TableDataType>TextField</TableDataType>
+    </TableData>
+  </Question>
+</Section>
 </questionnaire>
