@@ -1,6 +1,6 @@
 import React from "react";
-import "./table.css";
-const Table = ({ tableData }) => {
+import "./styles/EnvironmentTable.css";
+const EnvironmentTable = ({ tableData }) => {
   const { TableRow, TableData } = tableData;
   const headers = TableRow.split(",").map((header) => header.trim());
   const rows = [];
@@ -47,4 +47,4 @@ const Table = ({ tableData }) => {
     </table>
   );
 };
-export default Table;
+export default EnvironmentTable;

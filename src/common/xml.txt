@@ -1,15 +1,6 @@
 <questionnaire>
   <Section title="Section-1">
     <Question ID="1">
-      <QuestionText>
-        This Consent Acknowledgement is intended to describe the practices EY follows in relation to Qualtrics CoreXM (“Tool”) with respect to the privacy of all individuals whose personal data is processed and stored in the Tool. This Consent Acknowledgment should be read together with the ey.com Privacy Statement, and in case of any conflict with the ey.com Privacy Statement, the terms of this Consent Acknowledgement will prevail. Please read this Consent Acknowledgement carefully
-      </QuestionText>
-      <AnswerType>Radio Button</AnswerType>
-      <AnswerData>Yes, No</AnswerData>
-    </Question>
-  </Section>
-  <Section title="Section-2">
-    <Question ID="1">
       <QuestionText>How many environments you need?</QuestionText>
       <AnswerType>Radio Button</AnswerType>
       <AnswerData>Prod, UAT, Dev</AnswerData>
@@ -24,10 +15,16 @@
       <AnswerType>Text</AnswerType>
     </Question>
   </Section>
+  <Section title="Section-2">
+    <Question ID="3">
+      <QuestionText>Yet another question?</QuestionText>
+      <AnswerType>Text</AnswerType>
+    </Question>
+  </Section>
   <Section title="Section-3">
   <Question ID="1">
     <QuestionText>How many environments you need?</QuestionText>
-    <AnswerType>Table</AnswerType>
+    <AnswerType>Table_Env</AnswerType>
     <TableRow> , Region, Subscription ID, Resource group</TableRow>
     <TableData>
       <TableDataType>text</TableDataType>
