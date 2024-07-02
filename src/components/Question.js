@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles/DynamicForm.css";
 import Table from "./EnvironmentTable";
+import MultiSelectBox from "./MultiSelectBox";
 
 const Question = ({
   question,
@@ -36,6 +37,21 @@ const Question = ({
         ))}
       </div>
     )}
+
+    {question["AnswerType"] === "checkbox" && (
+      <div className="answer-options">
+        {question["AnswerData"].split(",").map((option) => (
+          <label key={option.trim()}>
+            <input
+              type="checkbox"
+              name={`${currentSection.$.title}-${question.$.ID}`}
+              value={option.trim()}
+            />
+            {option.trim()}
+          </label>
+        ))}
+      </div>
+    )}
     {question["AnswerType"] === "Text" && (
       <input
         className="text-input"
@@ -52,6 +68,9 @@ const Question = ({
       />
     )}
     {question["AnswerType"] === "Table_Env" && <Table tableData={question} />}
+    {question["AnswerType"] === "MultiSelectBox" && (
+      <MultiSelectBox question={question} />
+    )}
   </div>
 );
 
