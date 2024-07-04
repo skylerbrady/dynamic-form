@@ -10,6 +10,8 @@ const DynamicForm = (props) => {
     handleTextChange,
     selectedValues,
     handleSaveButton,
+    handleCheckBoxChange,
+    handleInputChangeForEnvTable,
   } = props;
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
 
@@ -39,6 +41,8 @@ const DynamicForm = (props) => {
                 handleTextChange={handleTextChange}
                 selectedValues={selectedValues}
                 currentSection={currentSection}
+                handleCheckBoxChange={handleCheckBoxChange}
+                handleInputChangeForEnvTable={handleInputChangeForEnvTable}
               />
             ))
           ) : (
@@ -49,6 +53,8 @@ const DynamicForm = (props) => {
               handleTextChange={handleTextChange}
               selectedValues={selectedValues}
               currentSection={currentSection}
+              handleCheckBoxChange={handleCheckBoxChange}
+              handleInputChangeForEnvTable={handleInputChangeForEnvTable}
             />
           )}
         </div>

@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 
-const CheckboxList = ({ question, selectedItems, onChange }) => {
+const getCheckBoxValue = (selectedValues, question, option) => {
+  let item = selectedValues[question.$.ID]?.split(",");
+  let index = item?.findIndex((val) => val === option);
+  return index >= 0;
+};
+
+const CheckboxList = ({ question, handleCheckBoxChange, selectedValues }) => {
   return (
     <div>
       {question["AnswerData"].split(",").map((item) => (
@@ -8,8 +14,10 @@ const CheckboxList = ({ question, selectedItems, onChange }) => {
           <input
             type="checkbox"
             value={item}
-            checked={selectedItems.includes(item)}
-            onChange={onChange}
+            checked={getCheckBoxValue(selectedValues, question, item.trim())}
+            onChange={(e) =>
+              handleCheckBoxChange(question.$.ID, e.target.checked, item.trim())
+            }
           />
           {item}
         </label>
@@ -23,27 +31,13 @@ const SelectedItemsBox = ({ selectedItems }) => {
     <div>
       <h3>Selected Items:</h3>
       <ul>
-        {selectedItems.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
+        {selectedItems?.map((item) => item && <li key={item}>{item}</li>)}
       </ul>
     </div>
   );
 };
 
-const MultiSelectBox = ({ question }) => {
-  console.log(question);
-  const [selectedItems, setSelectedItems] = useState([]);
-
-  const handleCheckboxChange = (e) => {
-    const { value, checked } = e.target;
-    setSelectedItems((prevSelectedItems) =>
-      checked
-        ? [...prevSelectedItems, value]
-        : prevSelectedItems.filter((item) => item !== value)
-    );
-  };
-
+const MultiSelectBox = ({ question, handleCheckBoxChange, selectedValues }) => {
   return (
     <div style={{ display: "flex", justifyContent: "space-between" }}>
       <div
@@ -57,8 +51,8 @@ const MultiSelectBox = ({ question }) => {
         <h3>Select Items:</h3>
         <CheckboxList
           question={question}
-          selectedItems={selectedItems}
-          onChange={handleCheckboxChange}
+          handleCheckBoxChange={handleCheckBoxChange}
+          selectedValues={selectedValues}
         />
       </div>
       <div
@@ -69,7 +63,9 @@ const MultiSelectBox = ({ question }) => {
           margin: "10px",
         }}
       >
-        <SelectedItemsBox selectedItems={selectedItems} />
+        <SelectedItemsBox
+          selectedItems={selectedValues[question.$.ID]?.split(",")}
+        />
       </div>
     </div>
   );

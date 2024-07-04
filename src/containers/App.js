@@ -9,6 +9,7 @@ const App = () => {
   const [selectedConsentFormValue, setSelectedConsentFormValue] = useState("");
   const [selectedFormContentValue, setSelectedFormContentValue] = useState("");
   const [selectedValues, setSelectedValues] = useState({});
+  const [selectedValue, setSelectedValue] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,23 +31,17 @@ const App = () => {
   const formContentsValueHandler = (value) => {
     setSelectedFormContentValue(value);
   };
-  const handleRadioChange = (sectionTitle, questionId, value) => {
+  const handleRadioChange = (questionId, value) => {
     setSelectedValues((prevValues) => ({
       ...prevValues,
-      [sectionTitle]: {
-        ...prevValues[sectionTitle],
-        [questionId]: value,
-      },
+      [questionId]: value,
     }));
   };
 
-  const handleTextChange = (sectionTitle, questionId, value) => {
+  const handleTextChange = (questionId, value) => {
     setSelectedValues((prevValues) => ({
       ...prevValues,
-      [sectionTitle]: {
-        ...prevValues[sectionTitle],
-        [questionId]: value,
-      },
+      [questionId]: value,
     }));
   };
 
@@ -54,7 +49,42 @@ const App = () => {
     let createFormData = {
       [selectedFormContentValue]: [selectedValues],
     };
-    console.log(createFormData);
+    console.log(selectedValues);
+  };
+
+  const handleCheckBoxChange = (questionId, isChecked, value) => {
+    let checkBoxVal = selectedValues[questionId]
+      ? selectedValues[questionId].split(",")
+      : [];
+
+    if (isChecked) {
+      !checkBoxVal.includes(value) && checkBoxVal.push(value);
+    } else {
+      let index =
+        checkBoxVal && checkBoxVal.findIndex((item) => item === value);
+      if (index >= 0) {
+        checkBoxVal.splice(index, 1);
+      }
+    }
+    setSelectedValue(checkBoxVal);
+    setSelectedValues((prevValues) => ({
+      ...prevValues,
+      [questionId]: checkBoxVal.toString(),
+    }));
+  };
+
+  // Handle onChange event for inputs
+  const handleInputChangeForEnvTable = (
+    question,
+    event,
+    rowIndex,
+    cellIndex
+  ) => {
+    const { name, value } = event.target;
+    setSelectedValues((prevValues) => ({
+      ...prevValues,
+      [question]: { [`${rowIndex}-${cellIndex}`]: value },
+    }));
   };
   return (
     <>
@@ -85,6 +115,8 @@ const App = () => {
                 handleTextChange={handleTextChange}
                 selectedValues={selectedValues}
                 handleSaveButton={handleSaveButton}
+                handleCheckBoxChange={handleCheckBoxChange}
+                handleInputChangeForEnvTable={handleInputChangeForEnvTable}
               />
             )}
         </div>
