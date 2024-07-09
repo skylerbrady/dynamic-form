@@ -93,3 +93,19 @@
 .dynamicWrapper {
   padding: 65px;
 }
+.checkbox_horizontal {
+  display: flex;
+  justify-content: space-between;
+}
+.homeButton {
+  position: relative;
+  left: 46%;
+}
+.homebtn {
+  background-color: #ece521;
+  border: 1px solid #ddd;
+  padding: 9px 17px 9px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+}

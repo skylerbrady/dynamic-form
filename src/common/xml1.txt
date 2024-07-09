@@ -34,7 +34,26 @@
     </Question>
   </Section>
   <Section title="Section-4">
-  <Question ID="7">
+    <Question ID="7">
+      <QuestionText>Select Yes or no</QuestionText>
+       <AnswerType>Radio Button</AnswerType>
+      <AnswerData>Yes, No</AnswerData>
+    </Question>
+    <Question ID="8">
+      <QuestionText>Please specify below</QuestionText>
+       <AnswerType>checkbox_horizontal</AnswerType>
+      <AnswerData>Prod, UAT, QA, Dev, others</AnswerData>
+    </Question>
+  </Section>
+  <Section title="Section-5">
+    <Question ID="9">
+      <QuestionText>select Dropdown</QuestionText>
+      <AnswerType>Dropdown</AnswerType>
+      <AnswerData>Option 1, Option 2, Option 3, option 4</AnswerData>
+    </Question>
+  </Section>
+  <Section title="Section-6">
+  <Question ID="10">
     <QuestionText>How many environments you need?</QuestionText>
     <AnswerType>Table_Env</AnswerType>
     <TableRow> , Region, Subscription ID, Resource group</TableRow>

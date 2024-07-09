@@ -12,6 +12,7 @@ const DynamicForm = (props) => {
     handleSaveButton,
     handleCheckBoxChange,
     handleInputChangeForEnvTable,
+    homeButtonClickHandler,
   } = props;
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
 
@@ -27,7 +28,10 @@ const DynamicForm = (props) => {
     }
   };
 
-  const currentSection = questionnaire.Section[currentSectionIndex];
+  const currentSection =
+    questionnaire?.Section?.length > 0
+      ? questionnaire.Section[currentSectionIndex]
+      : questionnaire.Section;
   return (
     <div className="dynamicWrapper">
       <form className="dynamic-form" action="javascript:void(0);">
@@ -73,6 +77,15 @@ const DynamicForm = (props) => {
             disabled={currentSectionIndex === questionnaire.Section.length - 1}
           >
             {COMMON.next}
+          </button>
+        </div>
+        <div className="homeButton">
+          <button
+            className="homebtn"
+            type="button"
+            onClick={homeButtonClickHandler}
+          >
+            {COMMON.home}
           </button>
         </div>
       </form>

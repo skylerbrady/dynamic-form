@@ -62,6 +62,28 @@ const Question = ({
           ))}
         </div>
       )}
+      {question["AnswerType"] === "checkbox_horizontal" && (
+        <div className="answer-options checkbox_horizontal">
+          {question["AnswerData"].split(",").map((option) => (
+            <label key={option.trim()}>
+              <input
+                type="checkbox"
+                name={`${currentSection.$.title}-${question.$.ID}`}
+                value={option.trim()}
+                checked={getCheckBoxValue(option.trim())}
+                onChange={(e) =>
+                  handleCheckBoxChange(
+                    question.$.ID,
+                    e.target.checked,
+                    option.trim()
+                  )
+                }
+              />
+              {option.trim()}
+            </label>
+          ))}
+        </div>
+      )}
       {question["AnswerType"] === "Text" && (
         <input
           className="text-input"
@@ -71,6 +93,16 @@ const Question = ({
           onChange={(e) => handleTextChange(question.$.ID, e.target.value)}
         />
       )}
+      {question["AnswerType"] === "Dropdown" && (
+        <div className="answer-options">
+          <select>
+            {question["AnswerData"].split(",").map((option) => (
+              <option>{option.trim()}</option>
+            ))}
+          </select>
+        </div>
+      )}
+
       {question["AnswerType"] === "Table_Env" && (
         <EnvironmentTable
           question={question}

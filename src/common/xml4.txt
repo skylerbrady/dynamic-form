@@ -1,0 +1,9 @@
+<questionnaire>  
+  <Section title="Section-1">
+    <Question ID="1">
+      <QuestionText>Select Yes or no</QuestionText>
+       <AnswerType>Radio Button</AnswerType>
+       <AnswerData>Option 3, Option 4, Option 5</AnswerData>
+    </Question>
+  </Section>
+</questionnaire>

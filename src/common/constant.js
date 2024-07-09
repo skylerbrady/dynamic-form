@@ -10,6 +10,7 @@ export const COMMON = {
   previous: "Previous",
   next: "Next",
   save: "Save",
+  home: "Home",
 };
 export const FORM_CONTENTS = {
   formContents: [

@@ -1,0 +1,51 @@
+<questionnaire>
+  <Section title="Section-1">
+    <Question ID="1">
+      <QuestionText>How many environments do you need?</QuestionText>
+      <AnswerType>Table_Env</AnswerType>
+      <TableRow> , Region, Subscription ID, Resource group</TableRow>
+      <TableData>
+        <TableDataType>text</TableDataType>
+        <TableDataValue>Product Environment</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>dropdown</TableDataType>
+        <TableDataValue>Product, Environment</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>TextField</TableDataType>
+      </TableData>
+      <TableData>
+        <TableDataType>TextField</TableDataType>
+      </TableData>
+      <TableData>
+        <TableDataType>text</TableDataType>
+        <TableDataValue>UAT Environment</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>dropdown</TableDataType>
+        <TableDataValue>Product 1, Environment 1</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>TextField</TableDataType>
+      </TableData>
+      <TableData>
+        <TableDataType>TextField</TableDataType>
+      </TableData>
+      <TableData>
+        <TableDataType>text</TableDataType>
+        <TableDataValue>Dev Environment</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>dropdown</TableDataType>
+        <TableDataValue>Product 2, Environment 2</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>TextField</TableDataType>
+      </TableData>
+      <TableData>
+        <TableDataType>TextField</TableDataType>
+      </TableData>
+    </Question>
+  </Section>
+</questionnaire>

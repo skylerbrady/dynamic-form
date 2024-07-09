@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles/DynamicForm.css";
-import { FORM_CONTENTS } from "../common/constant";
+import { FORM_CONTENTS, COMMON } from "../common/constant";
 
 const FormContents = (props) => {
   return (
@@ -13,15 +13,30 @@ const FormContents = (props) => {
                 <label key={index}>
                   <input
                     type="radio"
-                    value={FORM_CONTENTS.formContents[index]}
+                    value={
+                      FORM_CONTENTS.formContents[props.selectedFormContentValue]
+                    }
                     onChange={() => {
                       props.formContentsValueHandler(index);
                     }}
+                    checked={
+                      item ===
+                      FORM_CONTENTS.formContents[props.selectedFormContentValue]
+                    }
                   />
                   {item}
                 </label>
               ))}
             </div>
+          </div>
+          <div className="homeButton">
+            <button
+              className="homebtn"
+              type="button"
+              onClick={props.handleFormContentNext}
+            >
+              {COMMON.next}
+            </button>
           </div>
         </div>
       </form>

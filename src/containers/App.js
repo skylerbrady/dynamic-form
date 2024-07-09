@@ -10,11 +10,13 @@ const App = () => {
   const [selectedFormContentValue, setSelectedFormContentValue] = useState("");
   const [selectedValues, setSelectedValues] = useState({});
   const [selectedValue, setSelectedValue] = useState([]);
+  const [showFormsContent, setShowFormContent] = useState(false);
+  const [formContentValue, setFormContentValue] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchXmlData();
+        const data = await fetchXmlData(formContentValue);
         setXmlData(data.questionnaire ? data.questionnaire : null);
       } catch (error) {
         console.error("Error fetching or parsing XML data");
@@ -22,10 +24,11 @@ const App = () => {
     };
 
     fetchData();
-  }, []);
+  }, [formContentValue]);
 
   const consentFormValueHandler = (value) => {
     setSelectedConsentFormValue(value);
+    value === "Yes" && setShowFormContent(true);
   };
 
   const formContentsValueHandler = (value) => {
@@ -86,9 +89,17 @@ const App = () => {
       [question]: { [`${rowIndex}-${cellIndex}`]: value },
     }));
   };
+
+  const homeButtonClickHandler = () => {
+    setShowFormContent(true);
+  };
+  const handleFormContentNext = () => {
+    setFormContentValue(selectedFormContentValue);
+    setShowFormContent(false);
+  };
   return (
     <>
-      {!xmlData ? (
+      {!xmlData && formContentValue !== "" ? (
         <div>Error fetching or parsing XML data</div>
       ) : (
         <div className="app">
@@ -99,15 +110,16 @@ const App = () => {
               selectedConsentFormValue={selectedConsentFormValue}
             />
           )}
-          {selectedConsentFormValue === "Yes" &&
-            selectedFormContentValue === "" && (
-              <FormContents
-                formContentsValueHandler={formContentsValueHandler}
-                selectedFormContentValue={selectedFormContentValue}
-              />
-            )}
-          {selectedConsentFormValue === "Yes" &&
-            selectedFormContentValue !== "" && (
+          {showFormsContent && (
+            <FormContents
+              formContentsValueHandler={formContentsValueHandler}
+              selectedFormContentValue={selectedFormContentValue}
+              handleFormContentNext={handleFormContentNext}
+            />
+          )}
+          {!showFormsContent &&
+            selectedConsentFormValue === "Yes" &&
+            formContentValue !== "" && (
               <DynamicForm
                 questionnaire={xmlData}
                 selectedFormContentValue={selectedFormContentValue}
@@ -117,6 +129,7 @@ const App = () => {
                 handleSaveButton={handleSaveButton}
                 handleCheckBoxChange={handleCheckBoxChange}
                 handleInputChangeForEnvTable={handleInputChangeForEnvTable}
+                homeButtonClickHandler={homeButtonClickHandler}
               />
             )}
         </div>

@@ -1,0 +1,21 @@
+<questionnaire>  
+  <Section title="Section-1">
+    <Question ID="1">
+      <QuestionText>Multi select box</QuestionText>
+      <AnswerType>MultiSelectBox</AnswerType>
+      <AnswerData>Option 3, Option 4, Option 5</AnswerData>
+    </Question>
+  </Section>
+  <Section title="Section-2">
+    <Question ID="2">
+      <QuestionText>Select Yes or no</QuestionText>
+       <AnswerType>Radio Button</AnswerType>
+      <AnswerData>Yes, No</AnswerData>
+    </Question>
+    <Question ID="3">
+      <QuestionText>Please specify below</QuestionText>
+       <AnswerType>checkbox_horizontal</AnswerType>
+      <AnswerData>Prod, UAT, QA, Dev, others</AnswerData>
+    </Question>
+  </Section>
+</questionnaire>
