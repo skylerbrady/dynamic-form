@@ -3,6 +3,8 @@ import DynamicForm from "../components/DynamicForm";
 import { fetchXmlData } from "../common/commonHelpers";
 import ConsentForm from "../components/ConsentForm";
 import FormContents from "../components/FormContents";
+import { useMsal, useIsAuthenticated } from "@azure/msal-react";
+import { loginRequest } from "..//authConfig";
 
 const App = () => {
   const [xmlData, setXmlData] = useState(null);
@@ -12,6 +14,15 @@ const App = () => {
   const [selectedValue, setSelectedValue] = useState([]);
   const [showFormsContent, setShowFormContent] = useState(false);
   const [formContentValue, setFormContentValue] = useState("");
+
+  const isAuthenticated = useIsAuthenticated();
+  const { instance } = useMsal();
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      instance.loginRedirect(loginRequest);
+    }
+  }, [isAuthenticated, instance]);
 
   useEffect(() => {
     const fetchData = async () => {
