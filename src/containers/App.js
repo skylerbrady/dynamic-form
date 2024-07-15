@@ -4,7 +4,7 @@ import { fetchXmlData } from "../common/commonHelpers";
 import ConsentForm from "../components/ConsentForm";
 import FormContents from "../components/FormContents";
 import { useMsal, useIsAuthenticated } from "@azure/msal-react";
-import { loginRequest } from "..//authConfig";
+import { loginRequest, msalInstance } from "../authConfig";
 
 const App = () => {
   const [xmlData, setXmlData] = useState(null);
@@ -19,10 +19,18 @@ const App = () => {
   const { instance } = useMsal();
 
   useEffect(() => {
+    msalInstance.initialize();
     if (!isAuthenticated) {
-      instance.loginRedirect(loginRequest);
+      authenticated();
     }
   }, [isAuthenticated, instance]);
+
+  const authenticated = async () => {
+    await msalInstance.initialize();
+    instance.loginRedirect(loginRequest).catch((e) => {
+      console.error("MSAL login error", e);
+    });
+  };
 
   useEffect(() => {
     const fetchData = async () => {
