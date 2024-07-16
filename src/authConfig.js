@@ -1,6 +1,6 @@
-import { PublicClientApplication } from "@azure/msal-browser";
+import { LogLevel } from "@azure/msal-browser";
 
-const msalConfig = {
+export const msalConfig = {
   auth: {
     clientId: "26ba84c8-fe43-4f5f-96af-8568955a970b",
     authority:
@@ -11,12 +11,34 @@ const msalConfig = {
     cacheLocation: "localStorage",
     storeAuthStateInCookie: false,
   },
+
+  system: {
+    loggerOptions: {
+      loggerCallback: (level, message, containsPii) => {
+        if (containsPii) {
+          return;
+        }
+        switch (level) {
+          case LogLevel.Error:
+            console.error(message);
+            return;
+          case LogLevel.Info:
+            console.info(message);
+            return;
+          case LogLevel.Verbose:
+            console.debug(message);
+            return;
+          case LogLevel.Warning:
+            console.warn(message);
+            return;
+          default:
+            return;
+        }
+      },
+    },
+  },
 };
 
-const loginRequest = {
+export const loginRequest = {
   scopes: ["User.Read"], // Add the required scopes here
 };
-
-const msalInstance = new PublicClientApplication(msalConfig);
-
-export { msalInstance, msalConfig, loginRequest };
