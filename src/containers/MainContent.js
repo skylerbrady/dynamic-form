@@ -3,8 +3,11 @@ import DynamicForm from "../components/DynamicForm";
 import { fetchXmlData } from "../common/commonHelpers";
 import ConsentForm from "../components/ConsentForm";
 import FormContents from "../components/FormContents";
+import Header from "../common/Header";
+import { useMsal } from "@azure/msal-react";
+import axios from "axios";
 
-const MainContent = () => {
+const MainContent = (props) => {
   const [xmlData, setXmlData] = useState(null);
   const [selectedConsentFormValue, setSelectedConsentFormValue] = useState("");
   const [selectedFormContentValue, setSelectedFormContentValue] = useState("");
@@ -12,7 +15,7 @@ const MainContent = () => {
   const [selectedValue, setSelectedValue] = useState([]);
   const [showFormsContent, setShowFormContent] = useState(false);
   const [formContentValue, setFormContentValue] = useState("");
-
+  const { accounts } = useMsal();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -48,11 +51,30 @@ const MainContent = () => {
     }));
   };
 
-  const handleSaveButton = () => {
+  const handleSaveButton = async () => {
     let createFormData = {
       [selectedFormContentValue]: [selectedValues],
     };
     console.log(selectedValues);
+    if (props.accessToken) {
+      try {
+        const response = await axios.post(
+          "https://ue2ppbexbhwap01.azurewebsites.net/api/DemandQuestionnaire",
+          createFormData,
+          {
+            headers: {
+              Authorization: `Bearer ${props.accessToken}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        console.log("API response:", response.data);
+      } catch (error) {
+        console.error("Error calling the API", error);
+      }
+    } else {
+      console.error("No access token available");
+    }
   };
 
   const handleCheckBoxChange = (questionId, isChecked, value) => {
@@ -97,8 +119,10 @@ const MainContent = () => {
     setFormContentValue(selectedFormContentValue);
     setShowFormContent(false);
   };
+  const userName = accounts[0]?.name || accounts[0]?.username || "User";
   return (
     <>
+      <Header userName={userName} />
       {!xmlData && formContentValue !== "" ? (
         <div>Error fetching or parsing XML data</div>
       ) : (

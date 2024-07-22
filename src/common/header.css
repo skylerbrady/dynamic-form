@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding: 10px 20px;
+  color: #000000;
+}
+
+.title {
+  margin: 0;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+}
+
+.logout-button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
