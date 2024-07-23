@@ -13,24 +13,27 @@ const MainView = () => {
   const { instance } = useMsal();
   const activeAccount = instance.getActiveAccount();
   const [accessToken, setAccessToken] = useState(null);
+
   const handleRedirect = () => {
     instance
       .loginRedirect({
         ...loginRequest,
-        prompt: "create",
+        prompt: "select_account",
       })
       .catch((error) => console.log(error));
   };
+
   useEffect(() => {
     if (!activeAccount) {
       handleRedirect();
     }
-  });
+  }, [activeAccount, handleRedirect]);
 
   useEffect(() => {
     const fetchAccessToken = async () => {
       const request = {
-        scopes: ["user.read"], // Update with the scopes your API requires
+        scopes: loginRequest.scopes, // scopes API requires
+        account: activeAccount,
       };
 
       try {
@@ -49,6 +52,36 @@ const MainView = () => {
       fetchAccessToken();
     }
   }, [instance, activeAccount]);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const checkAndRefreshToken = async () => {
+        const accounts = instance.getAllAccounts();
+        if (accounts.length > 0) {
+          const request = {
+            scopes: loginRequest.scopes,
+            account: accounts[0],
+          };
+
+          try {
+            const response = await instance.acquireTokenSilent(request);
+            setAccessToken(response.accessToken);
+          } catch (error) {
+            if (error instanceof InteractionRequiredAuthError) {
+              instance.acquireTokenRedirect(request);
+            } else {
+              console.error("Error refreshing token silently", error);
+            }
+          }
+        }
+      };
+
+      checkAndRefreshToken();
+    }, 300000); //refresh token every 5 minutes
+
+    return () => clearInterval(intervalId);
+  }, [instance]);
+
   return (
     <>
       <AuthenticatedTemplate>
@@ -60,6 +93,7 @@ const MainView = () => {
     </>
   );
 };
+
 const App = ({ instance }) => {
   return (
     <MsalProvider instance={instance}>
@@ -67,4 +101,5 @@ const App = ({ instance }) => {
     </MsalProvider>
   );
 };
+
 export default App;
