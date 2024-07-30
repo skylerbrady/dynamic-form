@@ -22,7 +22,7 @@ const Question = ({
       className="question"
       key={`${currentSection.$.title}-${question.$.ID}`}
     >
-      <p>{question["QuestionText"]}</p>
+      <p>{`${question.$.ID}.  ${question["QuestionText"]}`}</p>
       {question["AnswerType"] === "Radio Button" && (
         <div className="answer-options">
           {question["AnswerData"].split(",").map((option) => (

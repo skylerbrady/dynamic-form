@@ -1,21 +1,81 @@
 <questionnaire>  
   <Section title="Section-1">
     <Question ID="1">
-      <QuestionText>Multi select box</QuestionText>
-      <AnswerType>MultiSelectBox</AnswerType>
-      <AnswerData>Option 3, Option 4, Option 5</AnswerData>
+      <QuestionText>Which EY product* you are trying to amend / enhance here? If the product is already registered, you can search it in APM, and then put product’s APM link below. In case this product is not registered yet, please put product’s Prod URL below.</QuestionText>
+      <AnswerType>Text</AnswerType>
     </Question>
   </Section>
   <Section title="Section-2">
     <Question ID="2">
-      <QuestionText>Select Yes or no</QuestionText>
-       <AnswerType>Radio Button</AnswerType>
-      <AnswerData>Yes, No</AnswerData>
+      <QuestionText>Kindly specify the name of the Product Manager handling this product.</QuestionText>
+      <AnswerType>Text</AnswerType>
     </Question>
+  </Section>  
+  <Section title="Section-3">
     <Question ID="3">
-      <QuestionText>Please specify below</QuestionText>
-       <AnswerType>checkbox_horizontal</AnswerType>
-      <AnswerData>Prod, UAT, QA, Dev, others</AnswerData>
+      <QuestionText>Kindly share the name of the Solution Architect taking care of this product.</QuestionText>
+      <AnswerType>Text</AnswerType>
+    </Question>
+  </Section>  
+  <Section title="Section-4">
+    <Question ID="4">
+      <QuestionText>In case you are not aware of the name of the solution architect, kindly ask the product manager.</QuestionText>
+      <AnswerType>Text</AnswerType>
+    </Question>
+  </Section>
+  <Section title="Section-4">
+    <Question ID="5">
+      <QuestionText>Kindly share the Application Support contact.</QuestionText>
+      <AnswerType>Text</AnswerType>
+    </Question>
+  </Section>
+  <Section title="Section-5">
+    <Question ID="6">
+      <QuestionText>Kindly share the existing infrastructure hosting details (region, subscription, resource group etc.), if available. You can provide these details later also.</QuestionText>
+      <AnswerType>Table_Env</AnswerType>
+      <TableRow> , Region, Subscription ID, Resource group</TableRow>
+      <TableData>
+        <TableDataType>text</TableDataType>
+        <TableDataValue>Product Environment</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>dropdown</TableDataType>
+        <TableDataValue>Product, Environment</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>TextField</TableDataType>
+      </TableData>
+      <TableData>
+        <TableDataType>TextField</TableDataType>
+      </TableData>
+      <TableData>
+        <TableDataType>text</TableDataType>
+        <TableDataValue>UAT Environment</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>dropdown</TableDataType>
+        <TableDataValue>Product 1, Environment 1</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>TextField</TableDataType>
+      </TableData>
+      <TableData>
+        <TableDataType>TextField</TableDataType>
+      </TableData>
+      <TableData>
+        <TableDataType>text</TableDataType>
+        <TableDataValue>Dev Environment</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>dropdown</TableDataType>
+        <TableDataValue>Product 2, Environment 2</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>TextField</TableDataType>
+      </TableData>
+      <TableData>
+        <TableDataType>TextField</TableDataType>
+      </TableData>
     </Question>
   </Section>
 </questionnaire>

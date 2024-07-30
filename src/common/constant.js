@@ -15,7 +15,7 @@ export const COMMON = {
 export const FORM_CONTENTS = {
   formContents: [
     "POC",
-    "sample text",
+    "Real EY data",
     "testing",
     "new elements",
     "replace later",

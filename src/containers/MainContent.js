@@ -5,7 +5,7 @@ import ConsentForm from "../components/ConsentForm";
 import FormContents from "../components/FormContents";
 import Header from "../common/Header";
 import { useMsal } from "@azure/msal-react";
-import axios from "axios";
+import { api } from "../common/api";
 
 const MainContent = (props) => {
   const [xmlData, setXmlData] = useState(null);
@@ -58,16 +58,13 @@ const MainContent = (props) => {
     console.log(selectedValues);
     if (props.accessToken) {
       try {
-        const response = await axios.post(
+        const response = await api(
+          props.accessToken,
           "https://ue2ppbexbhwap01.azurewebsites.net/api/DemandQuestionnaire",
-          createFormData,
-          {
-            headers: {
-              Authorization: `Bearer ${props.accessToken}`,
-              "Content-Type": "application/json",
-            },
-          }
+          "PUT",
+          createFormData
         );
+        console.log("API response:", response);
         console.log("API response:", response.data);
       } catch (error) {
         console.error("Error calling the API", error);
