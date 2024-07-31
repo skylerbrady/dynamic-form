@@ -52,26 +52,28 @@ const MainContent = (props) => {
   };
 
   const handleSaveButton = async () => {
-    let createFormData = {
-      [selectedFormContentValue]: [selectedValues],
-    };
+    let createFormData = { ...selectedValues };
+    createFormData["XMLVersionId"] = "1";
     console.log(selectedValues);
-    if (props.accessToken) {
-      try {
-        const response = await api(
-          props.accessToken,
-          "https://ue2ppbexbhwap01.azurewebsites.net/api/DemandQuestionnaire",
-          "PUT",
-          createFormData
-        );
-        console.log("API response:", response);
-        console.log("API response:", response.data);
-      } catch (error) {
-        console.error("Error calling the API", error);
-      }
-    } else {
-      console.error("No access token available");
+    // if (props.accessToken) {
+    let securityKey =
+      "80-E9-CD-69-03-67-25-DF-02-3C-30-16-ED-13-23-6A-F7-8D-95-65-24-02-D2-C7-9C-93-74-05-DF-68-78-A4-ED-91-1E-1B-94-A8-7B-2E-4A-AE-CB-F0-85-44-0A-C0";
+    try {
+      const response = await api(
+        " props.accessToken",
+        securityKey,
+        "https://ue2ppbexbhwap01.azurewebsites.net/api/DemandQuestionnaire",
+        "PUT",
+        createFormData
+      );
+      console.log("API response:", response);
+      console.log("API response:", response.data);
+    } catch (error) {
+      console.error("Error calling the API", error);
     }
+    // } else {
+    //   console.error("No access token available");
+    // }
   };
 
   const handleCheckBoxChange = (questionId, isChecked, value) => {
@@ -116,6 +118,23 @@ const MainContent = (props) => {
     setFormContentValue(selectedFormContentValue);
     setShowFormContent(false);
   };
+
+  const getAnswerData = async () => {
+    let securityKey =
+      "80-E9-CD-69-03-67-25-DF-02-3C-30-16-ED-13-23-6A-F7-8D-95-65-24-02-D2-C7-9C-93-74-05-DF-68-78-A4-ED-91-1E-1B-94-A8-7B-2E-4A-AE-CB-F0-85-44-0A-C0";
+    try {
+      const response = await api(
+        " props.accessToken",
+        securityKey,
+        "https://ue2ppbexbhwap01.azurewebsites.net/api/Lookup",
+        "GET"
+      );
+      console.log("API response:", response);
+      console.log("API response:", response.data);
+    } catch (error) {
+      console.error("Error calling the API", error);
+    }
+  };
   const userName = accounts[0]?.name || accounts[0]?.username || "User";
   return (
     <>
@@ -141,17 +160,26 @@ const MainContent = (props) => {
           {!showFormsContent &&
             selectedConsentFormValue === "Yes" &&
             formContentValue !== "" && (
-              <DynamicForm
-                questionnaire={xmlData}
-                selectedFormContentValue={selectedFormContentValue}
-                handleRadioChange={handleRadioChange}
-                handleTextChange={handleTextChange}
-                selectedValues={selectedValues}
-                handleSaveButton={handleSaveButton}
-                handleCheckBoxChange={handleCheckBoxChange}
-                handleInputChangeForEnvTable={handleInputChangeForEnvTable}
-                homeButtonClickHandler={homeButtonClickHandler}
-              />
+              <>
+                <button
+                  onClick={() => {
+                    getAnswerData();
+                  }}
+                >
+                  GetCall
+                </button>
+                <DynamicForm
+                  questionnaire={xmlData}
+                  selectedFormContentValue={selectedFormContentValue}
+                  handleRadioChange={handleRadioChange}
+                  handleTextChange={handleTextChange}
+                  selectedValues={selectedValues}
+                  handleSaveButton={handleSaveButton}
+                  handleCheckBoxChange={handleCheckBoxChange}
+                  handleInputChangeForEnvTable={handleInputChangeForEnvTable}
+                  homeButtonClickHandler={homeButtonClickHandler}
+                />
+              </>
             )}
         </div>
       )}
