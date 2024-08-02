@@ -8,6 +8,7 @@ import {
 } from "@azure/msal-react";
 import { loginRequest } from "../authConfig";
 import { InteractionRequiredAuthError } from "@azure/msal-browser";
+import Header from "../common/Header";
 
 const MainView = () => {
   const { instance } = useMsal();
@@ -88,7 +89,11 @@ const MainView = () => {
         {activeAccount ? <MainContent accessToken={accessToken} /> : ""}
       </AuthenticatedTemplate>
       <UnauthenticatedTemplate>
-        <button onClick={handleRedirect}>Sign up</button>
+        <Header
+          userName={"Unkown User"}
+          handleRedirect={handleRedirect}
+          unauthenticated={true}
+        />
       </UnauthenticatedTemplate>
     </>
   );

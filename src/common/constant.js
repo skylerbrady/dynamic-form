@@ -11,6 +11,7 @@ export const COMMON = {
   next: "Next",
   save: "Save",
   home: "Home",
+  xmlFetchError: "Error fetching or parsing XML data",
 };
 export const FORM_CONTENTS = {
   formContents: [
@@ -20,4 +21,9 @@ export const FORM_CONTENTS = {
     "new elements",
     "replace later",
   ],
+};
+
+export const URL = {
+  UPDATE_RESPONSE:
+    "https://ue2ppbexbhwap01.azurewebsites.net/api/DemandQuestionnaire/updateResponse",
 };
