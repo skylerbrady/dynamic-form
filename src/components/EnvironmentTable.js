@@ -80,6 +80,25 @@ const EnvironmentTable = ({
                       }
                     />
                   )}
+                  {cell.type === "checkbox" && (
+                    <input
+                      type="checkbox"
+                      name={`${rowIndex}-${cellIndex}`}
+                      checked={
+                        selectedValues[question.$.ID]?.[
+                          `${rowIndex}-${cellIndex}`
+                        ] || ""
+                      }
+                      onChange={(e) =>
+                        handleInputChangeForEnvTable(
+                          question.$.ID,
+                          e,
+                          rowIndex,
+                          cellIndex
+                        )
+                      }
+                    />
+                  )}
                 </td>
               ))}
             </tr>

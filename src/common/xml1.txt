@@ -1,104 +1,162 @@
 <questionnaire>
   <Section title="Section-1">
     <Question ID="1">
+      <QuestionSequenceNo>1</QuestionSequenceNo>
+      <IsQuestionMandatory>true</IsQuestionMandatory>
+      <IsQuestionMandatoryErrorMsg>enter this </IsQuestionMandatoryErrorMsg>
       <QuestionText>How many environments you need?</QuestionText>
       <AnswerType>Radio Button</AnswerType>
+      <AnswerTypeID>1</AnswerTypeID>
       <AnswerData>Prod, UAT, Dev</AnswerData>
+      <AnswerHelpText></AnswerHelpText>
     </Question>
     <Question ID="2">
-      <QuestionText>Another question...</QuestionText>
+      <QuestionSequenceNo>4</QuestionSequenceNo>
+      <IsQuestionMandatory>true</IsQuestionMandatory>
+      <IsQuestionMandatoryErrorMsg>enter this </IsQuestionMandatoryErrorMsg>
+      <QuestionText>Another question last</QuestionText>
       <AnswerType>Radio Button</AnswerType>
+      <AnswerTypeID>1</AnswerTypeID>
       <AnswerData>Option 3, Option 4, Option 5</AnswerData>
+      <AnswerHelpText></AnswerHelpText>
     </Question>
     <Question ID="3">
-      <QuestionText>Yet another question?</QuestionText>
+      <QuestionSequenceNo>3</QuestionSequenceNo>
+      <IsQuestionMandatory>false</IsQuestionMandatory>
+      <IsQuestionMandatoryErrorMsg></IsQuestionMandatoryErrorMsg>
+      <QuestionText>Another question...</QuestionText>
       <AnswerType>Text</AnswerType>
+      <AnswerHelpText></AnswerHelpText>
     </Question>
   </Section>
   <Section title="Section-2">
     <Question ID="4">
+      <QuestionSequenceNo>2</QuestionSequenceNo>
+      <IsQuestionMandatory>true</IsQuestionMandatory>
+      <IsQuestionMandatoryErrorMsg>enter this </IsQuestionMandatoryErrorMsg>
       <QuestionText>Yet another question?</QuestionText>
       <AnswerType>Text</AnswerType>
-    </Question>
-    <Question ID="5">
-      <QuestionText>Check box</QuestionText>
-      <AnswerType>checkbox</AnswerType>
-      <AnswerData>Option 3, Option 4, Option 5</AnswerData>
+      <AnswerHelpText></AnswerHelpText>
     </Question>
   </Section>
-  <Section title="Section-3">
+   <Section title="Section-3">
     <Question ID="6">
-      <QuestionText>Multi select box</QuestionText>
-      <AnswerType>MultiSelectBox</AnswerType>
-      <AnswerData>Option 3, Option 4, Option 5</AnswerData>
+      <QuestionSequenceNo>4</QuestionSequenceNo>
+      <IsQuestionMandatory>true</IsQuestionMandatory>
+      <IsQuestionMandatoryErrorMsg>enter this </IsQuestionMandatoryErrorMsg>
+      <QuestionText>Product Environment table 2</QuestionText>
+      <AnswerType>Table_Env</AnswerType>
+      <TableRow> , Component, Region</TableRow>
+      <TableData>
+        <TableDataType>text</TableDataType>
+        <TableDataValue>Dev</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>checkbox</TableDataType>
+        <TableDataValue></TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>dropdown</TableDataType>
+        <TableDataValue>Product 1, Environment 1</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>text</TableDataType>
+        <TableDataValue>QA</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>checkbox</TableDataType>
+        <TableDataValue></TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>dropdown</TableDataType>
+        <TableDataValue>Product 2, Environment 2</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>text</TableDataType>
+        <TableDataValue>UAT</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>checkbox</TableDataType>
+        <TableDataValue></TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>dropdown</TableDataType>
+        <TableDataValue>Product 3, Environment 3</TableDataValue>
+      </TableData>  
+       <TableData>
+        <TableDataType>text</TableDataType>
+        <TableDataValue>Prod</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>checkbox</TableDataType>
+        <TableDataValue></TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>dropdown</TableDataType>
+        <TableDataValue>Product 4, Environment 4</TableDataValue>
+      </TableData> 
+       <TableData>
+        <TableDataType>text</TableDataType>
+        <TableDataValue>other</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>checkbox</TableDataType>
+        <TableDataValue></TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>dropdown</TableDataType>
+        <TableDataValue>Product 5, Environment 5</TableDataValue>
+      </TableData> 
     </Question>
   </Section>
   <Section title="Section-4">
     <Question ID="7">
-      <QuestionText>Select Yes or no</QuestionText>
-       <AnswerType>Radio Button</AnswerType>
-      <AnswerData>Yes, No</AnswerData>
-    </Question>
-    <Question ID="8">
-      <QuestionText>Please specify below</QuestionText>
-       <AnswerType>checkbox_horizontal</AnswerType>
-      <AnswerData>Prod, UAT, QA, Dev, others</AnswerData>
+      <QuestionSequenceNo>4</QuestionSequenceNo>
+      <IsQuestionMandatory>true</IsQuestionMandatory>
+      <IsQuestionMandatoryErrorMsg>enter this </IsQuestionMandatoryErrorMsg>
+      <QuestionText>Product Environment table 2</QuestionText>
+      <AnswerType>Table_Env</AnswerType>
+      <TableRow> , </TableRow>
+      <TableData>
+        <TableDataType>text</TableDataType>
+        <TableDataValue>Dev Region</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>dropdown</TableDataType>
+        <TableDataValue>Product 1, Environment 1</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>text</TableDataType>
+        <TableDataValue>QA Region</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>dropdown</TableDataType>
+        <TableDataValue>Product 2, Environment 2</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>text</TableDataType>
+        <TableDataValue>UAT Region</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>dropdown</TableDataType>
+        <TableDataValue>Product 3, Environment 3</TableDataValue>
+      </TableData>  
+       <TableData>
+        <TableDataType>text</TableDataType>
+        <TableDataValue>Prod Region</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>dropdown</TableDataType>
+        <TableDataValue>Product 4, Environment 4</TableDataValue>
+      </TableData> 
+       <TableData>
+        <TableDataType>text</TableDataType>
+        <TableDataValue>other Region</TableDataValue>
+      </TableData>
+      <TableData>
+        <TableDataType>dropdown</TableDataType>
+        <TableDataValue>Product 5, Environment 5</TableDataValue>
+      </TableData> 
     </Question>
   </Section>
-  <Section title="Section-5">
-    <Question ID="9">
-      <QuestionText>select Dropdown</QuestionText>
-      <AnswerType>Dropdown</AnswerType>
-      <AnswerData>Option 1, Option 2, Option 3, option 4</AnswerData>
-    </Question>
-  </Section>
-  <Section title="Section-6">
-  <Question ID="10">
-    <QuestionText>How many environments you need?</QuestionText>
-    <AnswerType>Table_Env</AnswerType>
-    <TableRow> , Region, Subscription ID, Resource group</TableRow>
-    <TableData>
-      <TableDataType>text</TableDataType>
-      <TableDataValue>Product Environment</TableDataValue>
-    </TableData>
-    <TableData>
-      <TableDataType>dropdown</TableDataType>
-      <TableDataValue>Product, Environment</TableDataValue>
-    </TableData>
-    <TableData>
-      <TableDataType>TextField</TableDataType>
-    </TableData>
-    <TableData>
-      <TableDataType>TextField</TableDataType>
-    </TableData>
-    <TableData>
-      <TableDataType>text</TableDataType>
-      <TableDataValue>UAT Environment</TableDataValue>
-    </TableData>
-    <TableData>
-      <TableDataType>dropdown</TableDataType>
-      <TableDataValue>Product 1, Environment 1</TableDataValue>
-    </TableData>
-    <TableData>
-      <TableDataType>TextField</TableDataType>
-    </TableData>
-    <TableData>
-      <TableDataType>TextField</TableDataType>
-    </TableData>
-     <TableData>
-      <TableDataType>text</TableDataType>
-      <TableDataValue>Dev Environment</TableDataValue>
-    </TableData>
-    <TableData>
-      <TableDataType>dropdown</TableDataType>
-      <TableDataValue>Product 2, Environment 2</TableDataValue>
-    </TableData>
-    <TableData>
-      <TableDataType>TextField</TableDataType>
-    </TableData>
-    <TableData>
-      <TableDataType>TextField</TableDataType>
-    </TableData>
-  </Question>
-</Section>
 </questionnaire>

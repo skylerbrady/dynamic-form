@@ -15,16 +15,43 @@ const DynamicForm = (props) => {
     homeButtonClickHandler,
   } = props;
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
+  const [errors, setErrors] = useState({});
+
+  const validateSection = () => {
+    const currentSection = questionnaire.Section[currentSectionIndex];
+    const newErrors = {};
+
+    currentSection.Question.forEach((question) => {
+      if (
+        question.IsQuestionMandatory === "true" &&
+        !selectedValues[question.$.ID]
+      ) {
+        newErrors[question.$.ID] =
+          question.IsQuestionMandatoryErrorMsg || "This field is required";
+      }
+    });
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const nextSection = () => {
-    if (currentSectionIndex < questionnaire.Section.length - 1) {
-      setCurrentSectionIndex(currentSectionIndex + 1);
+    if (validateSection()) {
+      if (currentSectionIndex < questionnaire.Section.length - 1) {
+        setCurrentSectionIndex(currentSectionIndex + 1);
+      }
     }
   };
 
   const prevSection = () => {
-    if (currentSectionIndex > 0) {
-      setCurrentSectionIndex(currentSectionIndex - 1);
+    setCurrentSectionIndex(
+      currentSectionIndex > 0 ? currentSectionIndex - 1 : 0
+    );
+  };
+
+  const handleSave = async () => {
+    if (validateSection()) {
+      handleSaveButton();
     }
   };
 
@@ -32,6 +59,7 @@ const DynamicForm = (props) => {
     questionnaire?.Section?.length > 0
       ? questionnaire.Section[currentSectionIndex]
       : questionnaire.Section;
+
   return (
     <div className="dynamicWrapper">
       <form className="dynamic-form" action="javascript:void(0);">
@@ -47,6 +75,7 @@ const DynamicForm = (props) => {
                 currentSection={currentSection}
                 handleCheckBoxChange={handleCheckBoxChange}
                 handleInputChangeForEnvTable={handleInputChangeForEnvTable}
+                errorMessage={errors[question.$.ID]}
               />
             ))
           ) : (
@@ -59,6 +88,7 @@ const DynamicForm = (props) => {
               currentSection={currentSection}
               handleCheckBoxChange={handleCheckBoxChange}
               handleInputChangeForEnvTable={handleInputChangeForEnvTable}
+              errorMessage={errors[currentSection.Question.$.ID]}
             />
           )}
         </div>
@@ -70,7 +100,9 @@ const DynamicForm = (props) => {
           >
             {COMMON.previous}
           </button>
-          <button onClick={handleSaveButton}>{COMMON.save}</button>
+          <button type="button" onClick={handleSave}>
+            {COMMON.save}
+          </button>
           <button
             type="button"
             onClick={nextSection}

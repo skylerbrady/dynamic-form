@@ -11,18 +11,20 @@ const Question = ({
   currentSection,
   handleCheckBoxChange,
   handleInputChangeForEnvTable,
+  errorMessage,
 }) => {
   const getCheckBoxValue = (option) => {
     let item = selectedValues[question.$.ID]?.split(",");
     let index = item?.findIndex((val) => val === option);
     return index >= 0;
   };
+
   return (
     <div
       className="question"
       key={`${currentSection.$.title}-${question.$.ID}`}
     >
-      <p>{`${question.$.ID}.  ${question["QuestionText"]}`}</p>
+      <p>{`${question.QuestionSequenceNo}.  ${question["QuestionText"]}`}</p>
       {question["AnswerType"] === "Radio Button" && (
         <div className="answer-options">
           {question["AnswerData"].split(",").map((option) => (
@@ -95,9 +97,15 @@ const Question = ({
       )}
       {question["AnswerType"] === "Dropdown" && (
         <div className="answer-options">
-          <select>
+          <select
+            name={`${currentSection.$.title}-${question.$.ID}`}
+            value={selectedValues[question.$.ID]}
+            onChange={(e) => handleTextChange(question.$.ID, e.target.value)}
+          >
             {question["AnswerData"].split(",").map((option) => (
-              <option>{option.trim()}</option>
+              <option key={option.trim()} value={option.trim()}>
+                {option.trim()}
+              </option>
             ))}
           </select>
         </div>
@@ -117,6 +125,8 @@ const Question = ({
           selectedValues={selectedValues}
         />
       )}
+
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
     </div>
   );
 };
