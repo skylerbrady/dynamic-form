@@ -8,7 +8,7 @@
       <AnswerType>Radio Button</AnswerType>
       <AnswerTypeID>1</AnswerTypeID>
       <AnswerData>Prod, UAT, Dev</AnswerData>
-      <AnswerHelpText></AnswerHelpText>
+      <AnswerHelpText>sample help text</AnswerHelpText>
     </Question>
     <Question ID="2">
       <QuestionSequenceNo>4</QuestionSequenceNo>
@@ -18,7 +18,7 @@
       <AnswerType>Radio Button</AnswerType>
       <AnswerTypeID>1</AnswerTypeID>
       <AnswerData>Option 3, Option 4, Option 5</AnswerData>
-      <AnswerHelpText></AnswerHelpText>
+      <AnswerHelpText>sample help text</AnswerHelpText>
     </Question>
     <Question ID="3">
       <QuestionSequenceNo>3</QuestionSequenceNo>
@@ -26,7 +26,7 @@
       <IsQuestionMandatoryErrorMsg></IsQuestionMandatoryErrorMsg>
       <QuestionText>Another question...</QuestionText>
       <AnswerType>Text</AnswerType>
-      <AnswerHelpText></AnswerHelpText>
+      <AnswerHelpText>sample help text</AnswerHelpText>
     </Question>
   </Section>
   <Section title="Section-2">

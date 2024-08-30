@@ -37,6 +37,7 @@ const MainContent = (props) => {
 
   const formContentsValueHandler = (value) => {
     setSelectedFormContentValue(value);
+    setSelectedValues({});
   };
   const handleRadioChange = (questionId, value) => {
     setSelectedValues((prevValues) => ({

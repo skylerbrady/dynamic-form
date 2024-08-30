@@ -25,6 +25,10 @@ const Question = ({
       key={`${currentSection.$.title}-${question.$.ID}`}
     >
       <p>{`${question.QuestionSequenceNo}.  ${question["QuestionText"]}`}</p>
+
+      {question["AnswerHelpText"] && (
+        <p className="help-text">{question["AnswerHelpText"]}</p>
+      )}
       {question["AnswerType"] === "Radio Button" && (
         <div className="answer-options">
           {question["AnswerData"].split(",").map((option) => (
