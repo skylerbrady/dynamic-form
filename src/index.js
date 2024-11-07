@@ -20,6 +20,7 @@ msalInstance.addEventCallback(
       const account = event.payload.account;
       msalInstance.setActiveAccount(account);
       console.log("hello");
+      console.log("hi");
     }
   },
   (error) => {
