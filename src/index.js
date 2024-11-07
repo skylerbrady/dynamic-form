@@ -21,7 +21,6 @@ msalInstance.addEventCallback(
       msalInstance.setActiveAccount(account);
       console.log("hello");
       console.log("hi");
-      console.log("Best!!");
     }
   },
   (error) => {
